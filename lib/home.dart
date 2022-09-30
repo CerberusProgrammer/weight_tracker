@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mrx_charts/mrx_charts.dart';
@@ -40,7 +38,7 @@ class _Home extends State<Home> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   scrollable: true,
-                  title: const Text('Weight Tracker'),
+                  title: const Text('What\'s your weight?'),
                   content: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Form(
@@ -51,12 +49,13 @@ class _Home extends State<Home> {
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
                               labelText: 'Weight',
+                              suffix: Text('kg'),
                               icon: Icon(Icons.monitor_weight_outlined),
                             ),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -90,7 +89,12 @@ class _Home extends State<Home> {
                         }
 
                         setState(() {
-                          texts.add(Text(weight.text));
+                          if (texts.isEmpty) {
+                            texts.add(Text(weight.text));
+                            texts.add(Text(weight.text));
+                          } else {
+                            texts.add(Text(weight.text));
+                          }
                         });
                         Navigator.of(context).pop();
                       },
@@ -171,8 +175,7 @@ class _Home extends State<Home> {
           circleSize: 4.0,
           circleBorderThickness: 2.0,
           currentPos: (item) => item.currentValuePos,
-          onTextValue: (item) =>
-              '${item.value.toString()} kg\n${DateTime(now.year, now.month, now.day).toString().substring(0, 10)}',
+          onTextValue: (item) => '${item.value.toString()} kg',
           marginBottom: 6.0,
           padding: const EdgeInsets.symmetric(
             horizontal: 12.0,
