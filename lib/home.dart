@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mrx_charts/mrx_charts.dart';
 
+import 'package:weight_tracker/data.dart';
+import 'package:weight_tracker/weight.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -13,17 +16,59 @@ class _Home extends State<Home> {
   List<Text> texts = [];
   final weight = TextEditingController();
 
+  late final MAX;
+  late final MIN;
+
   double lowerWeight = 200;
   double higherWeight = 0;
+
+  List<ListTile> makeListTile() {
+    List<ListTile> list = [];
+    for (int i = 0; i < texts.length; i++) {
+      list.add(
+        ListTile(
+          title: texts[i],
+        ),
+      );
+    }
+
+    return list;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weight Tracker'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history),
+            tooltip: 'History',
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute<void>(
+                builder: (BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text('History'),
+                    ),
+                    body: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Center(
+                        child: ListView(
+                          children: makeListTile(),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ));
+            },
+          )
+        ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding:
+            const EdgeInsets.only(bottom: 100, top: 20, left: 20, right: 20),
         child: Chart(
           layers: layers(),
           padding: const EdgeInsets.symmetric(horizontal: 30.0).copyWith(
@@ -69,7 +114,7 @@ class _Home extends State<Home> {
                         }
 
                         if (double.parse(weight.text) < 40 ||
-                            double.parse(weight.text) > 200) {
+                            double.parse(weight.text) > 150) {
                           Navigator.of(context).pop();
                           return;
                         }
@@ -95,6 +140,9 @@ class _Home extends State<Home> {
                           } else {
                             texts.add(Text(weight.text));
                           }
+
+                          Weight w1 = Weight(w, DateTime.now());
+                          Data.weight.add(w1);
                         });
                         Navigator.of(context).pop();
                       },
