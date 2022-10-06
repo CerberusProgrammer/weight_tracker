@@ -5,6 +5,8 @@ import 'package:mrx_charts/mrx_charts.dart';
 import 'package:weight_tracker/data.dart';
 import 'package:weight_tracker/weight.dart';
 
+import 'package:introduction_screen/introduction_screen.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -21,19 +23,6 @@ class _Home extends State<Home> {
 
   double lowerWeight = 200;
   double higherWeight = 0;
-
-  List<ListTile> makeListTile() {
-    List<ListTile> list = [];
-    for (int i = 0; i < texts.length; i++) {
-      list.add(
-        ListTile(
-          title: texts[i],
-        ),
-      );
-    }
-
-    return list;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -140,10 +129,13 @@ class _Home extends State<Home> {
                           } else {
                             texts.add(Text(weight.text));
                           }
-
-                          Weight w1 = Weight(w, DateTime.now());
-                          Data.weight.add(w1);
                         });
+
+                        DateTime now = DateTime.now();
+                        Weight w1 =
+                            Weight(w, DateTime(now.year, now.month, now.day));
+                        Data.weight.add(w1);
+
                         Navigator.of(context).pop();
                       },
                       child: const Text('Add'),
@@ -156,6 +148,22 @@ class _Home extends State<Home> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  List<ListTile> makeListTile() {
+    List<ListTile> list = [];
+
+    for (int i = 0; i < Data.weight.length; i++) {
+      list.add(
+        ListTile(
+          title: Text('${Data.weight[i].weight} kg'),
+          subtitle: Text(
+              '${Data.weight[i].date.year}/${Data.weight[i].date.month}/${Data.weight[i].date.day}'),
+        ),
+      );
+    }
+
+    return list;
   }
 
   List<ChartLayer> layers() {
@@ -171,7 +179,7 @@ class _Home extends State<Home> {
     return [
       ChartHighlightLayer(
         shape: () => ChartHighlightLineShape<ChartLineDataItem>(
-          backgroundColor: const Color.fromARGB(255, 58, 58, 58),
+          backgroundColor: Color.fromARGB(255, 194, 194, 194),
           currentPos: (item) => item.currentValuePos,
           radius: const BorderRadius.all(Radius.circular(8.0)),
           width: 60.0,
@@ -184,22 +192,22 @@ class _Home extends State<Home> {
             max: to.millisecondsSinceEpoch.toDouble(),
             min: from.millisecondsSinceEpoch.toDouble(),
             textStyle: TextStyle(
-              color: Colors.white.withOpacity(0.6),
+              color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
               fontSize: 10.0,
             ),
           ),
           y: ChartAxisSettingsAxis(
             frequency: 10.0,
-            max: 150,
-            min: 40,
+            max: 200,
+            min: 50,
             textStyle: TextStyle(
-              color: Colors.white.withOpacity(0.6),
+              color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
               fontSize: 10.0,
             ),
           ),
         ),
         labelX: (value) =>
-            DateTime(now.year, now.month, now.day).toString().substring(0, 10),
+            DateTime(now.month, now.day).toString().substring(0, 10),
         labelY: (value) => value.toInt().toString(),
       ),
       ChartLineLayer(
@@ -211,15 +219,15 @@ class _Home extends State<Home> {
           ),
         ),
         settings: const ChartLineSettings(
-          color: Color(0xFF8043F9),
+          color: Color.fromRGBO(255, 193, 7, 1),
           thickness: 4.0,
         ),
       ),
       ChartTooltipLayer(
         shape: () => ChartTooltipLineShape<ChartLineDataItem>(
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(255, 193, 7, 1),
           circleBackgroundColor: Colors.white,
-          circleBorderColor: const Color(0xFF331B6D),
+          circleBorderColor: Color.fromARGB(255, 0, 0, 0),
           circleSize: 4.0,
           circleBorderThickness: 2.0,
           currentPos: (item) => item.currentValuePos,
@@ -231,7 +239,7 @@ class _Home extends State<Home> {
           ),
           radius: 6.0,
           textStyle: const TextStyle(
-            color: Color(0xFF8043F9),
+            color: Color.fromARGB(255, 255, 255, 255),
             letterSpacing: 0.2,
             fontSize: 14.0,
             fontWeight: FontWeight.w700,
