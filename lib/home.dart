@@ -5,8 +5,6 @@ import 'package:mrx_charts/mrx_charts.dart';
 import 'package:weight_tracker/data.dart';
 import 'package:weight_tracker/weight.dart';
 
-import 'package:introduction_screen/introduction_screen.dart';
-
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -17,9 +15,6 @@ class Home extends StatefulWidget {
 class _Home extends State<Home> {
   List<Text> texts = [];
   final weight = TextEditingController();
-
-  late final MAX;
-  late final MIN;
 
   double lowerWeight = 200;
   double higherWeight = 0;
@@ -124,7 +119,13 @@ class _Home extends State<Home> {
 
                         setState(() {
                           if (texts.isEmpty) {
-                            texts.add(Text(weight.text));
+                            double w = Weight.actualWeight;
+                            texts.add(Text(w.toString()));
+                            DateTime now = DateTime.now();
+                            Weight w1 = Weight(
+                                w, DateTime(now.year, now.month, now.day));
+                            Data.weight.add(w1);
+
                             texts.add(Text(weight.text));
                           } else {
                             texts.add(Text(weight.text));
@@ -179,7 +180,7 @@ class _Home extends State<Home> {
     return [
       ChartHighlightLayer(
         shape: () => ChartHighlightLineShape<ChartLineDataItem>(
-          backgroundColor: Color.fromARGB(255, 194, 194, 194),
+          backgroundColor: const Color.fromARGB(255, 194, 194, 194),
           currentPos: (item) => item.currentValuePos,
           radius: const BorderRadius.all(Radius.circular(8.0)),
           width: 60.0,
@@ -192,16 +193,16 @@ class _Home extends State<Home> {
             max: to.millisecondsSinceEpoch.toDouble(),
             min: from.millisecondsSinceEpoch.toDouble(),
             textStyle: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
+              color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
               fontSize: 10.0,
             ),
           ),
           y: ChartAxisSettingsAxis(
             frequency: 10.0,
-            max: 200,
-            min: 50,
+            max: Weight.MAX,
+            min: Weight.MIN,
             textStyle: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
+              color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
               fontSize: 10.0,
             ),
           ),
@@ -225,9 +226,9 @@ class _Home extends State<Home> {
       ),
       ChartTooltipLayer(
         shape: () => ChartTooltipLineShape<ChartLineDataItem>(
-          backgroundColor: Color.fromRGBO(255, 193, 7, 1),
+          backgroundColor: const Color.fromRGBO(255, 193, 7, 1),
           circleBackgroundColor: Colors.white,
-          circleBorderColor: Color.fromARGB(255, 0, 0, 0),
+          circleBorderColor: const Color.fromARGB(255, 0, 0, 0),
           circleSize: 4.0,
           circleBorderThickness: 2.0,
           currentPos: (item) => item.currentValuePos,

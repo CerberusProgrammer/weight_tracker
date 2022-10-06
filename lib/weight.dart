@@ -2,8 +2,9 @@ class Weight {
   double weight;
   DateTime date;
 
-  static late final double MAX;
-  static late final double MIN;
+  static late double MAX;
+  static late double MIN;
+  static late double actualWeight;
 
   Weight(this.weight, this.date);
 

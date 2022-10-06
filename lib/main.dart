@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:weight_tracker/weight.dart';
 import 'home.dart';
 import 'package:flutter/foundation.dart';
 
@@ -28,6 +29,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
+    double weight = double.parse(Introduction.weight.text);
+    Weight.actualWeight = weight;
+    Weight.MAX = weight + 30;
+    Weight.MIN = weight - 30;
+
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => const Home()),
@@ -48,7 +54,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           ),
         ),
       ),
-      pages: Introduction.pages,
+      pages: Introduction.init(),
       onDone: () => _onIntroEnd(context),
       showSkipButton: false,
       skipOrBackFlex: 0,
