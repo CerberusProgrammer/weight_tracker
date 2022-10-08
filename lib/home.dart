@@ -50,15 +50,15 @@ class _Home extends State<Home> {
           )
         ],
       ),
-      body: Padding(
-        padding:
-            const EdgeInsets.only(bottom: 100, top: 20, left: 20, right: 20),
-        child: Chart(
-          layers: layers(),
-          padding: const EdgeInsets.symmetric(horizontal: 30.0).copyWith(
-            bottom: 12.0,
+      body: ListView(
+        children: [
+          Chart(
+            layers: layers(),
+            padding: const EdgeInsets.symmetric(horizontal: 30.0).copyWith(
+              bottom: 12.0,
+            ),
           ),
-        ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
