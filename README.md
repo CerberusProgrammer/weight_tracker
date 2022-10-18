@@ -1,2 +1,12 @@
 # Weight Tracker
-![](https://lh3.googleusercontent.com/DV7wvGcxjvElFOAEmIn-_WoxUMuYIqvFsIFCZWSJRtoEozHjXUkTjizRCZXCbzFp4gezVh4KEmtN-EbSTByJUdYFWXt_fk-Q9szqbJ1AjA3uK28dP5dRIJZcXjKKmCzhlzq3p5BdtPqp7hb4GxKj3SExCdYyqbSD9Ij18hE8K02DTHU7VLXMgJgtyJzYSHqbczXYNqGp5iNRWo2DSKOUnmG_6BaXohx5r42h2lWtQCAF1Bc1CRGuJogkMVCVeGQppS7X6KcxfYLnU7DtwMFPkhfdXf7zsA2_pxigoui4JFVYlBlqcxjXTLRnhS-LYPbp9BdFLzFUpxM8eVGvZL1ZGLp7Jrq6ghdyYOGB_S3DukV_ICgZLlUF1-xY3s1kqeHu4fTC_0dwDNKBBpH1Ul_MOAX9i99Q6gKErl7PDIbwvKsE3J1T1ZK5-iZ5SRs_SqDUEj21G57fw_6jQX1YcI4LTuxhIxRyfgtKbBE53yfN3kNfQF4wbYxFq_wgqNpH9mD4JmMvbyxvQbziqHLQ2r5s6exgiUnBWscRBAWIHZdf2j2aftvzuUy3-lJxxcaay1DGrSxnQmH9VbcaDi4I5Y-VMfLCNyNrWtUD32HEQehhbC9rmYF3lLbxVNllMztyzdtN9KEhimKN1wbAr0YnKklmcBPz5blhFbAatTOn07AYXwWpvqSTIpZwIX43WQ6ybXyh6urMPTW3r_ZNsGs4XnWLdkSIMbIRz7FkWNuOFOnKGBFADKUQkLgEZ3coexLOHoYEAndYpslRF-riPltDP_9PqQLPu6CixDOlGOH5jXn8w1oUfyPvTIg4Lbu7iWnUzcAiPSWdWWclE0ddBwe5TIGVq6hfRZvCZAFQk5Eu-XUXTq4EQIQKFoSKFgzFb7U9IsGiRFS-s_JFDOy6LSpEoMmfovMNzbuW3L31hheFH-U=w454-h961-no?authuser=0 "HomeScreen")
+## What is Weight Tracker?
+This is a minimalistic app for that people who needs a fast way to put their information of their weight with a simple and beautiful design.
+
+## Features
+- Request the goals of the user.
+- Adapative way to display de Axis X and Y for the weight.
+- A local registration of the weight.
+- A more beautiful interactive history of all the weight.
+- Post the screenshots here.
+- Do an executable for Windows & Android (Maybe i'll upload this to the play store).
+- (Optional) A brief guide of how to use the app.
