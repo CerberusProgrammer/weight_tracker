@@ -10,15 +10,27 @@ import 'introduction.dart';
 void main(List<String> args) {
   Data.importData();
 
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'Weight Tracker',
-    theme: ThemeData(
-      primarySwatch: Colors.amber,
-      useMaterial3: true,
-    ),
-    home: const OnBoardingPage(),
-  ));
+  if (Data.isFile) {
+    runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Weight Tracker',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        useMaterial3: true,
+      ),
+      home: const Home(),
+    ));
+  } else {
+    runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Weight Tracker',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        useMaterial3: true,
+      ),
+      home: const OnBoardingPage(),
+    ));
+  }
 }
 
 class OnBoardingPage extends StatefulWidget {

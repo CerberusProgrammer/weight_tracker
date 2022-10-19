@@ -4,6 +4,7 @@ import 'dart:io';
 
 class Data {
   static List<Weight> weight = [];
+  static bool isFile = false;
 
   static void importData() async {
     File file = File('data.json');
@@ -13,6 +14,13 @@ class Data {
       contents = await file.readAsString();
 
       final decodedJson = jsonDecode(contents) as List<dynamic>;
+
+      for (int i = 0; i < decodedJson.length; i++) {
+        Weight w = Weight.fromJson(decodedJson[i]);
+        weight.add(w);
+      }
+
+      isFile = true;
     }
   }
 

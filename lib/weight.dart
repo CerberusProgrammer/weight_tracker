@@ -14,8 +14,17 @@ class Weight {
   setDate(DateTime date) => this.date = date;
   DateTime getDate() => date;
 
+  factory Weight.fromJson(dynamic json) {
+    return Weight(json['weight'] as double, DateTime.parse(json['date']));
+  }
+
   Map toJson() => {
         'weight': weight,
         'date': date.toString(),
       };
+
+  @override
+  String toString() {
+    return '"weight": ${weight}, "date": "${date.toString()}"';
+  }
 }
