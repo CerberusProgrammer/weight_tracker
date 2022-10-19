@@ -9,28 +9,31 @@ import 'introduction.dart';
 
 void main(List<String> args) {
   Data.importData();
+  print(Data.isFile);
 
-  if (Data.isFile) {
-    runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Weight Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-        useMaterial3: true,
-      ),
-      home: const Home(),
-    ));
-  } else {
-    runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Weight Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-        useMaterial3: true,
-      ),
-      home: const OnBoardingPage(),
-    ));
-  }
+  Future.delayed(const Duration(seconds: 1), () {
+    if (Data.isFile) {
+      runApp(MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Weight Tracker',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          useMaterial3: true,
+        ),
+        home: const Home(),
+      ));
+    } else {
+      runApp(MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Weight Tracker',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          useMaterial3: true,
+        ),
+        home: const OnBoardingPage(),
+      ));
+    }
+  });
 }
 
 class OnBoardingPage extends StatefulWidget {
