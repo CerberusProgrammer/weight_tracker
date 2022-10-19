@@ -5,5 +5,7 @@ class Data {
 
   static void importData() {}
 
-  static void exportData() {}
+  static void exportData() {
+    print(weight.toString());
+  }
 }

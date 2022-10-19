@@ -10,4 +10,9 @@ class Weight {
 
   setWeight(double weight) => this.weight = weight;
   double getWeight() => weight;
+
+  @override
+  String toString() {
+    return 'actualWeight: ${getWeight()}';
+  }
 }

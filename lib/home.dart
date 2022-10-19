@@ -47,7 +47,18 @@ class _Home extends State<Home> {
                 },
               ));
             },
-          )
+          ),
+          PopupMenuButton(
+              itemBuilder: (BuildContext context) => [
+                    PopupMenuItem(
+                      child: const Text('Clean History'),
+                      onTap: () {},
+                    ),
+                    PopupMenuItem(
+                      child: const Text('Reset Goal'),
+                      onTap: () {},
+                    ),
+                  ]),
         ],
       ),
       body: Padding(
@@ -97,8 +108,8 @@ class _Home extends State<Home> {
                           return;
                         }
 
-                        if (double.parse(weight.text) < 40 ||
-                            double.parse(weight.text) > 150) {
+                        if (double.parse(weight.text) < Weight.MIN ||
+                            double.parse(weight.text) > Weight.MAX) {
                           Navigator.of(context).pop();
                           return;
                         }
@@ -137,6 +148,8 @@ class _Home extends State<Home> {
                             Weight(w, DateTime(now.year, now.month, now.day));
                         Data.weight.add(w1);
 
+                        Data.exportData();
+
                         Navigator.of(context).pop();
                       },
                       child: const Text('Add'),
@@ -150,6 +163,10 @@ class _Home extends State<Home> {
       ),
     );
   }
+
+  void cleanHistory() {}
+
+  void resetGoal() {}
 
   List<ListTile> makeListTile() {
     List<ListTile> list = [];

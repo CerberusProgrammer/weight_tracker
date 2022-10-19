@@ -29,10 +29,19 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    double weight = double.parse(Introduction.weight.text);
-    Weight.actualWeight = weight;
-    Weight.MAX = weight + 30;
-    Weight.MIN = weight - 30;
+    double actualWeight = double.parse(Introduction.weight.text);
+    double goalWeight = double.parse(Introduction.goal.text);
+
+    Weight.actualWeight = actualWeight;
+
+    if (goalWeight < actualWeight) {
+      Weight.MAX = actualWeight + 10;
+      Weight.MIN = goalWeight - 5;
+    } else if (goalWeight == actualWeight) {
+    } else {
+      Weight.MAX = goalWeight + 5;
+      Weight.MIN = actualWeight - 5;
+    }
 
     Navigator.pushAndRemoveUntil(
       context,
