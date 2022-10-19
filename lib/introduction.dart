@@ -50,31 +50,31 @@ class Introduction {
               ),
             ),
           ))),
-          PageViewModel(
-            title: "Set you goal",
-            decoration: pageDecoratio.copyWith(
-              bodyAlignment: Alignment.bottomCenter,
-            ),
-            bodyWidget: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: goal,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: 'Goal',
-                        suffix: Text('kg'),
-                        icon: Icon(Icons.monitor_weight_outlined).
-                      ),
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    ),
-                  ],
+      PageViewModel(
+        title: "Set you goal",
+        decoration: pageDecoration.copyWith(
+          bodyAlignment: Alignment.bottomCenter,
+        ),
+        bodyWidget: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: goal,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    labelText: 'Goal',
+                    suffix: Text('kg'),
+                    icon: Icon(Icons.monitor_weight_outlined),
+                  ),
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
-              ),
+              ],
             ),
           ),
+        ),
+      ),
     ];
   }
 }
