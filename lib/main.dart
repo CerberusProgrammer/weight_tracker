@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:weight_tracker/weight.dart';
+import 'data.dart';
 import 'home.dart';
 import 'package:flutter/foundation.dart';
 
 import 'introduction.dart';
 
 void main(List<String> args) {
+  Data.importData();
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'Weight Tracker',

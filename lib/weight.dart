@@ -11,8 +11,11 @@ class Weight {
   setWeight(double weight) => this.weight = weight;
   double getWeight() => weight;
 
-  @override
-  String toString() {
-    return 'actualWeight: ${getWeight()}';
-  }
+  setDate(DateTime date) => this.date = date;
+  DateTime getDate() => date;
+
+  Map toJson() => {
+        'weight': weight,
+        'date': date.toString(),
+      };
 }
