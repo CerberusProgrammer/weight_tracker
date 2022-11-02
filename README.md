@@ -6,6 +6,7 @@ This is a minimalistic app for that people who needs a fast way to put their inf
 - ~~Request the goals of the user.~~
 - ~~Adapative way to display de Axis X and Y for the weight.~~
 - ~~A local registration of the weight.~~
+- Pending to do a functional user data file.
 - A more beautiful interactive history of all the weight.
 - Post the screenshots here.
 - Do an executable for Windows & Android (Maybe i'll upload this to the play store).
