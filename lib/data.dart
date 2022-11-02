@@ -8,6 +8,16 @@ class Data {
   static List<Weight> weight = [];
   static bool isFile = false;
 
+  static void loadData() {
+    importData();
+  }
+
+  bool importUserData() {
+    File file = File('user.json');
+  }
+
+  importWeightData() {}
+
   static void importData() async {
     File file = File('data.json');
     File fu = File('user.json');

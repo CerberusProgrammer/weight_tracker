@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mrx_charts/mrx_charts.dart';
 
 import 'package:weight_tracker/data.dart';
+import 'package:weight_tracker/user.dart';
 import 'package:weight_tracker/weight.dart';
 
 class Home extends StatefulWidget {
@@ -130,7 +131,7 @@ class _Home extends State<Home> {
 
                         setState(() {
                           if (texts.isEmpty) {
-                            double w = Weight.actualWeight;
+                            double w = User.actualWeight;
                             texts.add(Text(w.toString()));
                             DateTime now = DateTime.now();
                             Weight w1 = Weight(

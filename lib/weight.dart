@@ -4,7 +4,6 @@ class Weight {
 
   static late double MAX;
   static late double MIN;
-  static late double actualWeight;
 
   Weight(this.weight, this.date);
 

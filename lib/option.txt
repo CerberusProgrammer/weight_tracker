@@ -1,0 +1,15 @@
+Data.importData();
+
+  Future.delayed(const Duration(seconds: 1), () {
+    if (Data.isFile) {
+      runApp(MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Weight Tracker',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          useMaterial3: true,
+        ),
+        home: const Home(),
+      ));
+    } else {}
+  });

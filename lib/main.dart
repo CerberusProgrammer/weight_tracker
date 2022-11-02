@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:weight_tracker/user.dart';
 import 'package:weight_tracker/weight.dart';
 import 'data.dart';
 import 'home.dart';
@@ -8,32 +9,15 @@ import 'package:flutter/foundation.dart';
 import 'introduction.dart';
 
 void main(List<String> args) {
-  Data.importData();
-  print(Data.isFile);
-
-  Future.delayed(const Duration(seconds: 1), () {
-    if (Data.isFile) {
-      runApp(MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Weight Tracker',
-        theme: ThemeData(
-          primarySwatch: Colors.amber,
-          useMaterial3: true,
-        ),
-        home: const Home(),
-      ));
-    } else {
-      runApp(MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Weight Tracker',
-        theme: ThemeData(
-          primarySwatch: Colors.amber,
-          useMaterial3: true,
-        ),
-        home: const OnBoardingPage(),
-      ));
-    }
-  });
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'Weight Tracker',
+    theme: ThemeData(
+      primarySwatch: Colors.amber,
+      useMaterial3: true,
+    ),
+    home: const OnBoardingPage(),
+  ));
 }
 
 class OnBoardingPage extends StatefulWidget {
@@ -50,7 +34,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     double actualWeight = double.parse(Introduction.weight.text);
     double goalWeight = double.parse(Introduction.goal.text);
 
-    Weight.actualWeight = actualWeight;
+    User.actualWeight = actualWeight;
 
     if (goalWeight < actualWeight) {
       Weight.MAX = actualWeight + 10;
