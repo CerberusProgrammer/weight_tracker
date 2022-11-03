@@ -18,8 +18,9 @@ class Data {
       importedData = true;
     }
 
-    Weight.MAX = User.actualWeight + 10;
-    Weight.MIN = User.actualWeight - 10;
+    double actualWeight = weight[weight.length - 1].weight;
+    Weight.MAX = actualWeight + 10;
+    Weight.MIN = actualWeight - 10;
   }
 
   bool importUserData() {
@@ -54,8 +55,6 @@ class Data {
       Weight w = Weight.fromJson(element);
       weight.add(w);
     }
-
-    User.actualWeight = weight[weight.length - 1].weight;
 
     return true;
   }

@@ -34,8 +34,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     double actualWeight = double.parse(Introduction.weight.text);
     double goalWeight = double.parse(Introduction.goal.text);
 
-    User.actualWeight = actualWeight;
-
     if (goalWeight < actualWeight) {
       Weight.MAX = actualWeight + 10;
       Weight.MIN = goalWeight - 5;
